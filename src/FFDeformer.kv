@@ -1,0 +1,368 @@
+#:import Factory kivy.factory.Factory
+<FFDeformer>:
+    orientation: 'vertical'
+    padding: [0,20,0,0]
+    BoxLayout:
+        size_hint: .9, None
+        height:150
+        padding: [15,0,0,0]
+
+        BoxLayout:
+            size_hint: None,1
+            width: 250
+            orientation: 'vertical'
+
+            Button:
+                text: 'Load Object'
+                size_hint: None,None
+                size: 250,80
+                on_parent: dropdown.dismiss()
+                on_release: dropdown.open(self)
+
+            DropDown:
+                id: dropdown
+                Button:
+                    id: btn_cube
+                    text: 'Cube'
+                    size_hint_y: None
+                    height: 80
+                Button:
+                    id: btn_sphere
+                    text: 'Sphere'
+                    size_hint_y: None
+                    height: 80
+                Button:
+                    id: btn_cylinder
+                    text: 'Cylinder'
+                    size_hint_y: None
+                    height: 80
+                Button:
+                    id: btn_torus
+                    text: 'Torus'
+                    size_hint_y: None
+                    height: 80
+                Button:
+                    id: btn_from_file
+                    text: 'From File'
+                    size_hint_y: None
+                    height: 80
+
+            Widget:
+
+        BoxLayout:
+            size_hint: None,1
+            width: 250
+            orientation: 'vertical'
+
+            Button:
+                id: btn_save
+                text: 'Save Object'
+                size_hint: None,None
+                size: 250,80
+
+            Widget:
+
+        Menu:
+            id:menu
+
+    BoxLayout:
+        Renderer:
+            id:renderer
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: .25, 1
+            pos_hint: {'left': 0.75,'bottom':0.05}
+            padding: [0,0,30,0]
+
+            Widget:
+                size_hint: 1,None
+                height: 410
+
+            Label:
+                text: 'Lattice'
+                size_hint_y: None
+                height: 30
+
+            GridLayout:
+                cols: 3
+                size_hint_y: None
+                row_force_default: True
+                row_default_height: 80
+                height: 250
+
+                Label:
+                    text: 'x'
+                    size_hint: .1,1
+
+                Slider:
+                    id: x_cp_slider
+                    min: 4
+                    max: 10
+                    value: 4
+                    size_hint: .7,1
+
+                Label:
+                    id: x_cp_val
+                    text: '4 cps'
+                    size_hint: .2,1
+
+                Label:
+                    text: 'y'
+                    size_hint: .1,1
+
+                Slider:
+                    id: y_cp_slider
+                    min: 4
+                    max: 10
+                    value: 4
+                    size_hint: .7,1
+
+                Label:
+                    id: y_cp_val
+                    text: '4 cps'
+                    size_hint: .2,1
+
+                Label:
+                    text: 'z'
+                    size_hint: .1,1
+
+                Slider:
+                    id: z_cp_slider
+                    min: 4
+                    max: 10
+                    value: 4
+                    size_hint: .7,1
+
+                Label:
+                    id: z_cp_val
+                    text: '4 cps'
+                    size_hint: .2,1
+            Button:
+                id: btn_reset
+                text: 'Reset Deforemation'
+                size_hint: 1, None
+                height: 70
+
+            Widget:
+                size_hint_y: None
+                height: 70
+
+            Label:
+                text: 'Camera'
+                size_hint_y: None
+                height: 30
+
+            GridLayout:
+                cols: 3
+                size_hint_y: None
+                height: 80
+
+                Label:
+                    text: 'FoV'
+                    size_hint: .2,1
+
+                Slider:
+                    id: fov_slider
+                    min: 20
+                    max: 51
+                    value: 28
+                    size_hint: .7,1
+
+                Label:
+                    id: fov_val
+                    text: '28'
+                    size_hint: .1,1
+
+            GridLayout:
+                cols: 3
+                spacing: 10,10
+                size_hint: 1, None
+                height: 270
+
+                Button:
+                    id: cam_front
+                    text: 'Front'
+                    size_hint_y: None
+                    height: 80
+
+                Button:
+                    id: cam_left
+                    text: 'Left'
+                    size_hint_y: None
+                    height: 80
+
+                Button:
+                    id: cam_top
+                    text: 'Top'
+                    size_hint_y: None
+                    height: 80
+
+                Button:
+                    id: cam_back
+                    text: 'Back'
+                    size_hint_y: None
+                    height: 80
+
+                Button:
+                    id: cam_right
+                    text: 'Right'
+                    size_hint_y: None
+                    height: 80
+
+                Button:
+                    id: cam_bottom
+                    text: 'Bottom'
+                    size_hint_y: None
+                    height: 80
+
+            GridLayout:
+                cols: 2
+                spacing: 10,10
+                size_hint: 1, None
+                height: 80
+                Button:
+                    id: btn_undo
+                    text: 'Undo(U)'
+                    size_hint: 1, None
+                    height: 70
+
+                Button:
+                    id: btn_redo
+                    text: 'Redo(R)'
+                    size_hint: 1, None
+                    height: 70
+
+            GridLayout:
+                cols: 1
+                spacing: 10,10
+                size_hint: 1, None
+                height: 220
+                Button:
+                    id: btn_cp_visible
+                    text: 'Hide Control Points'
+                    size_hint: 1, None
+                    height: 70
+
+                Button:
+                    id: btn_obj_visible
+                    text: 'Hide Object'
+                    size_hint: 1, None
+                    height: 70
+
+<Menu>:
+    rows: 2
+
+    Label:
+        text:'View(V)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    Label:
+        text:'Select(S)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    Label:
+        text:'Edit(E)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    Label:
+        text:'Direct\nManimupation(D)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    Label:
+        text:'Bend(B)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    Label:
+        text:'Twist(T)'
+        size_hint: 1.0,1.0
+        halign: 'center'
+    CheckBox:
+        id: check_view
+        active: True
+        group: 'menu'
+    CheckBox:
+        id: check_select
+        active: False
+        group: 'menu'
+    CheckBox:
+        id: check_edit
+        active: False
+        group: 'menu'
+    CheckBox:
+        id: check_direct
+        active: False
+        group: 'menu'
+    CheckBox:
+        id: check_bend
+        active: False
+        group: 'menu'
+    CheckBox:
+        id: check_twist
+        active: False
+        group: 'menu'
+
+
+<FileChoosePopup>:
+    title: "Choose a .obj File"
+    size_hint: .8, .8
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: "vertical"
+        FileChooser:
+            id: filechooser
+            path:"/Users/ilenelu/Documents/Winter2020/CS779/project/FFDeformer"
+            #on_submit: root.load(filechooser.selection)
+            FileChooserIconLayout
+
+        BoxLayout:
+            size_hint: (1, 0.1)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            Button:
+                text: "Cancel"
+                on_release: root.dismiss()
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.selection)
+                id: ldbtn
+                disabled: True if filechooser.selection==[] else False
+
+<FileSavePopup>:
+    title: "Export Object"
+    size_hint: .8, .8
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: 1, None
+            height: 50
+            Label:
+                id: filesave_path
+                size_hint: 1, 1
+                halign: 'left'
+                text: "/Users/ilenelu/Documents/Winter2020/CS779/project/FFDeformer"
+        TextInput:
+            id: filesave_name
+            size_hint_y: None
+            height: 50
+            text: "untitled.obj"
+        FileChooser:
+            id: filesave
+            path:"/Users/ilenelu/Documents/Winter2020/CS779/project/FFDeformer"
+            dirselect: True
+            on_selection: root.update_path(filesave.selection)
+            FileChooserIconLayout
+
+        BoxLayout:
+            size_hint: (1, 0.1)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            Button:
+                text: "Cancel"
+                on_release: root.dismiss()
+            Button:
+                text: "Export .obj"
+                on_release: root.export(filesave_name.text, filesave_path.text)
+                id: ldbtn
